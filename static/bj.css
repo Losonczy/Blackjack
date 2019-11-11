@@ -1,0 +1,13 @@
+.table{
+  width: 1800px auto;
+  max-width: 95%;
+  height: 650px;
+  max-height: 80%;
+  background-color: darkgreen;
+  border-radius: 5px;
+  margin: 50px auto;
+  margin-bottom: 0;
+  box-shadow: 0 0 10px 2px;
+  text-align: center;
+  font-size: 60px;
+  }

@@ -1,5 +1,5 @@
 function showCard(){
-    createCard(createSrc(getRandomCard(deck)),'player1');
+    createCard(createSrc(getRandomCard(createDeck())),'player1');
 }
 
 function createSrc(card){
@@ -12,7 +12,6 @@ function createCard(src,who){
 
     var img=document.createElement("img");
     img.src = src;
-    img.style.display = "block";
     img.id="card";
     img.className='card';
     if (who=='player1'){
@@ -26,14 +25,12 @@ function checkForCards(){
 
 }
 
-var suits = ["S", "H", "D", "C"];
-var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-var deck = new Array();
-createDeck();
+const suits = ["S", "H", "D", "C"];
+const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
 function createDeck()
 {
-	deck = new Array();
+    var deck = new Array();
 	for (var i = 0 ; i < values.length; i++)
 	{
 	    for(var x = 0; x < suits.length; x++)
@@ -42,6 +39,7 @@ function createDeck()
 		deck.push(card);
 	    }
 	}
+	return deck;
 }
 
 function getRandomNumber(start, range) {

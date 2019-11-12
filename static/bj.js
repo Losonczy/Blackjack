@@ -1,8 +1,8 @@
-function changePicture(){
-    createCard(getPicture(9,'C'));
+function showCard(){
+    createSrc(createCard(9,'C'));
 }
 
-function getPicture(value,color){
+function createSrc(value,color){
 
     let picture="static/JPEG/"+value+color+".jpg";
     return picture;
@@ -10,9 +10,7 @@ function getPicture(value,color){
 
 function createCard(src){
 
-
     var img=document.createElement("img");
-
     img.src = src;
     img.style.display = "block";
     img.id="card";

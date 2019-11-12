@@ -1,5 +1,26 @@
-function showCard(){
-    createCard(createSrc(getRandomCard(createDeck())),'player1');
+const suits = ["S", "H", "D", "C"];
+const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+var playerCards = [];
+var bankCards = [];
+
+function storeHands(hand, currentCard)
+{
+    hand.push(currentCard);
+}
+
+function dealStartingHand()
+{
+    showCard('bank');
+    showCard('bank');
+    showCard('player');
+    showCard('player');
+
+}
+dealStartingHand();
+
+
+function showCard(who){
+    createCard(createSrc(getRandomCard(createDeck())), who);
 }
 
 function createSrc(card){
@@ -14,7 +35,7 @@ function createCard(src,who){
     img.src = src;
     img.id="card";
     img.className='card';
-    if (who=='player1'){
+    if (who=='player'){
             document.getElementById('player_hand').appendChild(img);
     }
     else{
@@ -25,8 +46,7 @@ function checkForCards(){
 
 }
 
-const suits = ["S", "H", "D", "C"];
-const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+
 
 function createDeck()
 {

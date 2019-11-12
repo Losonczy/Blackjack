@@ -8,8 +8,8 @@ const deck = createDeck()
 
 function separateCardValues(allCardValues)
 {
-    playerCardValues = (allCardValues[0]);
-    bankCardValues = (allCardValues[1]);
+    playerCardValues = (allCardValues[1]);
+    bankCardValues = (allCardValues[0]);
 }
 
 

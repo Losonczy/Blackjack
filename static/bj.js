@@ -1,5 +1,5 @@
 function showCard(){
-    createCard(createSrc(9,'C'));
+    createCard(createSrc(9,'C'),'player1');
 }
 
 function createSrc(value,color){
@@ -8,14 +8,20 @@ function createSrc(value,color){
     return src;
 }
 
-function createCard(src){
+function createCard(src,who){
 
     var img=document.createElement("img");
     img.src = src;
-    img.style.display = "block";
     img.id="card";
-    document.getElementById('table').appendChild(img);
+    img.className='card';
+    if (who=='player1'){
+            document.getElementById('player_hand').appendChild(img);
+    }
+    else{
+            document.getElementById('bank_hand').appendChild(img);
+    }
+}
+function checkForCards(){
 
 }
-function checkForCards(,)
 

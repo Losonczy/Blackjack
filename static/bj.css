@@ -1,4 +1,5 @@
 .table{
+  position: relative;
   width: 1800px auto;
   max-width: 95%;
   height: 650px;
@@ -17,11 +18,13 @@
   height: 150px;
   padding: 5px;
 }
-#table .player_hand{
-  margin-bottom: auto;
-  text-align: left;
+.player_hand{
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 }
-#table .bank_hand{
-  margin-top: auto;
-  text-align: left;
+.bank_hand{
+  position: absolute;
+  height: 100%;
+  text-align: center;
 }

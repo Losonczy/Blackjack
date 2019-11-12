@@ -12,6 +12,7 @@ function createCard(src,who){
 
     var img=document.createElement("img");
     img.src = src;
+    img.style.display = "block";
     img.id="card";
     img.className='card';
     if (who=='player1'){
@@ -24,4 +25,5 @@ function createCard(src,who){
 function checkForCards(){
 
 }
+
 

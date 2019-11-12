@@ -4,6 +4,16 @@ var playerCards = [];
 var bankCards = [];
 
 
+/*function round(){
+    let playerTurn = true;
+    dealStartingHand();
+    while (playerTurn == true){
+        document.getElementById("stay-btn").onclick = function swapTurn(){
+            playerTurn=false;
+        }
+    }
+}*/
+
 function storeHands(who, currentCard)
 {
     if (who === "player")

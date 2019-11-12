@@ -1,11 +1,11 @@
 function showCard(){
-    createSrc(createCard(9,'C'));
+    createCard(createSrc(9,'C'));
 }
 
 function createSrc(value,color){
 
-    let picture="static/JPEG/"+value+color+".jpg";
-    return picture;
+    let src="static/JPEG/"+value+color+".jpg";
+    return src;
 }
 
 function createCard(src){
@@ -17,4 +17,5 @@ function createCard(src){
     document.getElementById('table').appendChild(img);
 
 }
+function checkForCards(,)
 

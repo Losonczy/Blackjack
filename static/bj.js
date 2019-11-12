@@ -3,6 +3,7 @@ const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
 var playerCards = [];
 var bankCards = [];
 
+
 function storeHands(who, currentCard)
 {
     if (who === "player")
@@ -28,7 +29,7 @@ function dealStartingHand()
 dealStartingHand();
 
 function showCard(who){
-    var card = getRandomCard(createDeck());
+    var card = getRandomCard(createDeck(), playerCards, bankCards);
     storeHands(who, card);
     createCard(createSrc(card), who);
 }
@@ -106,10 +107,16 @@ function getRandomNumber(start, range) {
     }
 }*/
 
-function getRandomCard(deck)
+function getRandomCard(deck, playerCards, bankCards)
 {
     var randomCardIndex = getRandomNumber(0, 51);
     var card = deck[randomCardIndex]    ;
+    while (playerCards.includes(card) || bankCards.includes(card))
+    {
+        randomCardIndex = getRandomNumber(0, 51)
+        card = deck[randomCardIndex]
+    }
+
     return card;
 }
 

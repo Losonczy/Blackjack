@@ -3,9 +3,16 @@ const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
 var playerCards = [];
 var bankCards = [];
 
-function storeHands(hand, currentCard)
+function storeHands(who, currentCard)
 {
-    hand.push(currentCard);
+    if (who === "player")
+    {
+        playerCards.push(currentCard);
+    }
+    else
+    {
+        bankCards.push(currentCard);
+    }
 }
 
 function dealStartingHand()
@@ -16,12 +23,16 @@ function dealStartingHand()
     showCard('player');
 
 }
+
+
 dealStartingHand();
 
-
 function showCard(who){
-    createCard(createSrc(getRandomCard(createDeck())), who);
+    var card = getRandomCard(createDeck());
+    storeHands(who, card);
+    createCard(createSrc(card), who);
 }
+
 
 function createSrc(card){
 

@@ -7,7 +7,8 @@
     <script defer src="{{ url_for('static', filename='bj.js') }}"></script>
 </head>
 <body>
-<div class="table" id="table">Black Jack
+<div class="header">Black Jack</div>
+<div class="table" id="table">
     <div class="bank_hand" id="bank_hand"></div>
     <div class="player_hand" id="player_hand"> </div>
 
@@ -15,11 +16,8 @@
 
     <div class="controls">
         <button id="hit-btn" class="start-btn btn">Hit</button>
-        <button id="stay-btn" class="next-btn btn">Stay</button><br>
-        <textarea id="money" class="money" maxlength="10"></textarea>
+        <button id="stay-btn" class="next-btn btn">Stay</button>
     </div>
-
-<button onclick="showCard()">Enlarge</button>
 
 </body>
 </html>

@@ -39,7 +39,7 @@ function dealStartingHand()
 function hit() {
     console.log('hit');
     showCard('player');
-    console.log(playerCardValues);
+    console.log(summCardValues(bankCardValues));
 }
 
 
@@ -47,6 +47,10 @@ function showCard(who){
     let card = getRandomCard(createDeck(), playerCards, bankCards);
     storeHands(who, card);
     createCard(createSrc(card), who);
+    //store values
+    handCardValues = valuesOfCards(playerCards, bankCards);
+    separateCardValues(handCardValues);
+    //store values
 }
 
 
@@ -153,8 +157,8 @@ function startTurn() {
     document.querySelector('.player_hand').innerHTML="";
     document.querySelector('.bank_hand').innerHTML="";
     dealStartingHand();
-    let new_button=document.querySelector('.controls');
-    new_button.firstChild.addEventListener('click',hit())
+    //let new_button=document.querySelector('.controls');
+    //new_button.firstChild.addEventListener('click',hit())
 }
 
 /*function round(){
@@ -168,6 +172,16 @@ function startTurn() {
     document.getElementById('hit-btn').removeEventListener('click',showCard('player'))
     document.getElementById('stay-btn').removeEventListener('click',endTurn())
 }*/
+
+function summCardValues(hand) {
+    console.log(hand);
+    let summ=1;
+    for(let i of hand){
+        console.log(i + 'this');
+        summ= eval(summ) + eval(i);
+    }
+    return summ;
+}
 
 
 

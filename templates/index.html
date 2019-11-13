@@ -1,22 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Black Jack</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bj.css') }}">
-    <script defer src="{{ url_for('static', filename='bj.js') }}"></script>
-</head>
-<body>
-<div class="table" id="table">Black Jack
-    <div class="bank_hand" id="bank_hand"></div>
-    <div class="player_hand" id="player_hand"></div>
-</div>
 
-    <div class="controls">
-        <button onclick="hit()" id="hit-btn" class="hit-btn btn">Hit</button>
-        <button onclick="endTurn()" id="stay-btn" class="stay-btn btn">Stay</button><br>
-        <textarea id="money" class="money" maxlength="10"></textarea>
+    <!-- Bootstrap core CSS -->
+<link href="../static/style.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="../static/style.css" rel="stylesheet">
+  </head>
+ <body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#">How to Play</a>
+      </nav>
     </div>
+  </header>
 
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Black Jack</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="/game" class="btn btn-lg btn-secondary">Start Game</a>
+    </p>
+  </main>
+     <img src="{{ url_for('static', filename="blackjack.jpg" )}}" alt="Blackjack" class="center" width="400px">
+    <footer class="mastfoot mt-auto">
+    <div class="inner">
+        Created by
+      <p>BJ Team</p>
+    </div>
+  </footer>
 </body>
 </html>

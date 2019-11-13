@@ -1,8 +1,27 @@
 const suits = ["S", "H", "D", "C"];
 const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-var playerCards = [];
-var bankCards = [];
+let playerCards = [];
+let bankCards = [];
+var playerCardValues = [];
+var bankCardValues = [];
+const deck = createDeck()
 
+function separateCardValues(allCardValues)
+{
+    playerCardValues = (allCardValues[1]);
+    bankCardValues = (allCardValues[0]);
+}
+
+
+/*function round(){
+    let playerTurn = true;
+    dealStartingHand();
+    while (playerTurn == true){
+        document.getElementById("stay-btn").onclick = function swapTurn(){
+            playerTurn=false;
+        }
+    }
+}*/
 
 function storeHands(who, currentCard)
 {
@@ -29,7 +48,7 @@ function dealStartingHand()
 dealStartingHand();
 
 function showCard(who){
-    var card = getRandomCard(createDeck(), playerCards, bankCards);
+    let card = getRandomCard(createDeck(), playerCards, bankCards);
     storeHands(who, card);
     createCard(createSrc(card), who);
 }
@@ -43,7 +62,7 @@ function createSrc(card){
 
 function createCard(src,who){
 
-    var img=document.createElement("img");
+    let img = document.createElement("img");
     img.src = src;
     img.id="card";
     img.className='card';
@@ -54,10 +73,6 @@ function createCard(src,who){
             document.getElementById('bank_hand').appendChild(img);
     }
 }
-function checkForCards(){
-
-}
-
 
 
 function createDeck()
@@ -83,34 +98,47 @@ function getRandomNumber(start, range) {
 }
 
 
-
-/*function addValueToCards(cards)
+function valuesOfCards(playerCards, bankCards)
 {
-    var cardsDict{};
-    var cardValueIndex = 0
-    var cardValue;
+    let cardsOfPlayer = [];
+    cardsOfPlayer.push(addingValues(playerCards));
+    let cardsOfBank = [];
+    cardsOfBank.push(addingValues(bankCards));
+    let allHandCardValues = [cardsOfPlayer, cardsOfBank];
+    return allHandCardValues
+}
+
+
+function addingValues(cards)
+{
+    let cardValues = [];
+    let cardValueIndex = 0;
+    let cardValue;
     for (var i = 0 ; i < cards.length; i++) {
-        if (cards[i][cardValueIndex] == "J" || cards[i][cardValueIndex][i] == "Q" || cards[i][cardValueIndex][i] == "K") {
-            }
+        if (cards[i][cardValueIndex] === "J" || cards[i][cardValueIndex] === "Q" || cards[i][cardValueIndex] === "K") {
                 cardValue = 10;
             }
-        else if (cards[i][cardValueIndex == "A")
+        else if (cards[i][cardValueIndex] === "A")
             {
                 cardValue = 11;
             }
+        else if (cards[i][1] === "0")
+        {
+            cardValue = 10;
+        }
         else
             {
                 cardValue = parseInt(cards[i][cardValueIndex])
             }
-        cardsDict.push()
-
+        cardValues.push(cardValue);
     }
-}*/
+    return cardValues
+}
 
 function getRandomCard(deck, playerCards, bankCards)
 {
-    var randomCardIndex = getRandomNumber(0, 51);
-    var card = deck[randomCardIndex]    ;
+    let randomCardIndex = getRandomNumber(0, 51);
+    let card = deck[randomCardIndex]    ;
     while (playerCards.includes(card) || bankCards.includes(card))
     {
         randomCardIndex = getRandomNumber(0, 51)
@@ -119,5 +147,11 @@ function getRandomCard(deck, playerCards, bankCards)
 
     return card;
 }
+
+handCardValues = valuesOfCards(playerCards, bankCards)
+separateCardValues(handCardValues);
+console.log(playerCardValues);
+console.log(bankCardValues);
+
 
 

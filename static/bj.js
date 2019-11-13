@@ -153,8 +153,9 @@ function startTurn() {
     document.querySelector('.player_hand').innerHTML="";
     document.querySelector('.bank_hand').innerHTML="";
     dealStartingHand();
-    let new_button=document.getElementById('.hit-btn');
-    new_button.onclick="hit()";
+    //let new_button=document.getElementById('.hit-btn');
+    //new_button.onclick="hit()";
+    document.getElementById('.hit-btn').onclick="hit()";
 }
 
 /*function round(){

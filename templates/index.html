@@ -9,12 +9,12 @@
 <body>
 <div class="table" id="table">Black Jack
     <div class="bank_hand" id="bank_hand"></div>
-    <div class="player_hand" id="player_hand"> </div>
+    <div class="player_hand" id="player_hand"></div>
 </div>
 
     <div class="controls">
-        <button onclick="showCard()" id="hit-btn" class="start-btn btn">Hit</button>
-        <button id="stay-btn" class="stay-btn btn">Stay</button><br>
+        <button onclick="hit()" id="hit-btn" class="hit-btn btn">Hit</button>
+        <button onclick="endTurn()" id="stay-btn" class="stay-btn btn">Stay</button><br>
         <textarea id="money" class="money" maxlength="10"></textarea>
     </div>
 

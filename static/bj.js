@@ -5,23 +5,16 @@ let bankCards = [];
 var playerCardValues = [];
 var bankCardValues = [];
 const deck = createDeck()
+var turn='player'
+
+//let hit=document.getElementById('hit-btn').addEventListener('click', hit())
+//document.getElementById('stay-btn').addEventListener('click', endTurn())
 
 function separateCardValues(allCardValues)
 {
     playerCardValues = (allCardValues[1]);
     bankCardValues = (allCardValues[0]);
 }
-
-
-/*function round(){
-    let playerTurn = true;
-    dealStartingHand();
-    while (playerTurn == true){
-        document.getElementById("stay-btn").onclick = function swapTurn(){
-            playerTurn=false;
-        }
-    }
-}*/
 
 function storeHands(who, currentCard)
 {
@@ -43,9 +36,12 @@ function dealStartingHand()
     showCard('player');
 
 }
+function hit() {
+    console.log('hit');
+    showCard('player');
+    console.log(playerCardValues);
+}
 
-
-dealStartingHand();
 
 function showCard(who){
     let card = getRandomCard(createDeck(), playerCards, bankCards);
@@ -148,7 +144,35 @@ function getRandomCard(deck, playerCards, bankCards)
     return card;
 }
 
-handCardValues = valuesOfCards(playerCards, bankCards)
+function endTurn(){
+    let new_button=document.getElementById('hit-btn');
+    new_button.onclick="";
+}
+
+function startTurn() {
+    document.querySelector('.player_hand').innerHTML="";
+    document.querySelector('.bank_hand').innerHTML="";
+    dealStartingHand();
+    let new_button=document.getElementById('.hit-btn');
+    new_button.onclick="hit()";
+}
+
+/*function round(){
+
+    dealStartingHand();
+    turn='player';
+    while(turn==='player') {
+        document.getElementById('hit-btn').addEventListener('click', showCard('player'))
+        document.getElementById('stay-btn').addEventListener('click', endTurn())
+    }
+    document.getElementById('hit-btn').removeEventListener('click',showCard('player'))
+    document.getElementById('stay-btn').removeEventListener('click',endTurn())
+}*/
+
+
+
+startTurn();
+handCardValues = valuesOfCards(playerCards, bankCards);
 separateCardValues(handCardValues);
 console.log(playerCardValues);
 console.log(bankCardValues);

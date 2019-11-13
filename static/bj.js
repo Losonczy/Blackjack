@@ -94,13 +94,13 @@ function getRandomNumber(start, range) {
 }
 
 
-function valuesOfCards(playerCards, bankCards)
+function valuesOfCards(bankCards, playerCards)
 {
     let cardsOfPlayer = [];
     cardsOfPlayer.push(addingValues(playerCards));
     let cardsOfBank = [];
     cardsOfBank.push(addingValues(bankCards));
-    let allHandCardValues = [cardsOfPlayer, cardsOfBank];
+    let allHandCardValues = [cardsOfBank, cardsOfPlayer];
     return allHandCardValues
 }
 
@@ -174,8 +174,8 @@ function startTurn() {
 startTurn();
 handCardValues = valuesOfCards(bankCards, playerCards);
 separateCardValues(handCardValues);
-console.log(playerCardValues);
 console.log(bankCardValues);
+console.log(playerCardValues);
 
 
 

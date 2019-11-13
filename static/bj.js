@@ -186,7 +186,7 @@ function summCardValues(hand) {
 
 
 startTurn();
-handCardValues = valuesOfCards(playerCards, bankCards);
+handCardValues = valuesOfCards(bankCards, playerCards);
 separateCardValues(handCardValues);
 console.log(playerCardValues);
 console.log(bankCardValues);

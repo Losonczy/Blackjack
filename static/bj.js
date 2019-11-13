@@ -7,10 +7,9 @@ var bankCards = [];
 /*function round(){
     let playerTurn = true;
     dealStartingHand();
-    while (playerTurn == true){
-        document.getElementById("stay-btn").onclick = function swapTurn(){
-            playerTurn=false;
-        }
+    if document.getElementById("hit-btn").onclick = card;
+    if document.getElementById("stay-btn").onclick = playerTurn = false;
+
     }
 }*/
 

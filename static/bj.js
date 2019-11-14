@@ -247,6 +247,8 @@ function showGameOverUI(winCheck){
     let btn = document.createElement("BUTTON");
     btn.id = "replay_button btn";
     btn.className = 'replay_button';
+    btn.innerText="Replay";
+    btn.onclick=startTurn;
     document.getElementById('win_title').appendChild(txt);
     document.getElementById('win_title').appendChild(btn);
 }

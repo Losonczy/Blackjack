@@ -35,6 +35,8 @@ function dealStartingHand() {
     showCard('bank');
     showCard('player');
     showCard('player');
+    changeAceToOne(getSumValues(intOfBankCards));
+    changeAceToOne(getSumValues(intOfPlayerCards));
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
 }
 
@@ -173,7 +175,8 @@ function whoWon(sumPlayer, sumBank)
 {
  if (sumPlayer === 21 || sumBank ===21)   {
      if (sumPlayer === 21) {
-         showGameOverUI("Player wins");
+         showGameOverUI("Player wins")
+         changeVisibility();
          disableButtons();
      }
      else {
@@ -209,7 +212,7 @@ function startTurn() {
     numOfAcesInPlayer = 0;
     numOfAcesInBank = 0;
     resetElement();
-    
+
     document.querySelector('.player_hand').innerHTML = "";
     document.querySelector('.bank_hand').innerHTML = "";
     dealStartingHand();
@@ -284,7 +287,6 @@ function showGameOverUI(winCheck){
 function modifyCounter(cards) {
     let counter="Cards value:"+cards;
     document.getElementById('counter').innerText=counter;
-
 }
 
 

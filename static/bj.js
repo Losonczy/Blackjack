@@ -11,6 +11,7 @@ let intOfBankCards = [];
 let sumValuesOfBank = 0;
 let sumValuesOfPlayer = 0;
 let numOfAcesInPlayer = 0;
+let numOfAcesInBank = 0;
 
 function getIntFromObject(cards) {
     let intArray = [];
@@ -34,14 +35,12 @@ function dealStartingHand() {
     showCard('bank');
     showCard('player');
     showCard('player');
-
+    whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
 }
 
 function hit() {
     showCard('player');
-    console.log(intOfPlayerCards);
-    console.log(intOfBankCards);
-    console.log(typeof intOfPlayerCards[2]);
+    whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
 }
 
 
@@ -56,13 +55,11 @@ function showCard(who) {
     intOfPlayerCards = getIntFromObject(playerCardValues);
     sumValuesOfPlayer = getSumValues(intOfPlayerCards);
     sumValuesOfBank = getSumValues(intOfBankCards);
-    console.log(sumValuesOfPlayer);
     if (sumValuesOfPlayer > 21)
     {
         changeAceToOne(intOfPlayerCards);
     }
     sumValuesOfPlayer = getSumValues(intOfPlayerCards);
-    console.log(sumValuesOfPlayer);
     //store values
 }
 
@@ -152,15 +149,44 @@ function endTurn() {
     new_button.onclick = "";
     new_button = document.getElementById('stay-btn');
     new_button.onclick = "";
-    let a = true;
-    while (a === true) {
+    document.getElementById("cardback").style.visibility = "hidden";
+    while (getSumValues(intOfBankCards) < 21 && getSumValues(intOfPlayerCards) >= getSumValues(intOfBankCards)) {
         showCard('bank');
-        a = false;
+        let numOfAcesInBank = 0;
+        changeAceToOne(intOfBankCards, numOfAcesInBank);
     }
-    startTurn();
+    whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
+    if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){
+        console.log("Player won at endturn");
+    }
+    else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
+        console.log("Bank won at endturn");
+    }
+    else {
+        console.log("Its a tie");
+    }
 
 }
 
+function whoWon(sumPlayer, sumBank)
+{
+ if (sumPlayer === 21 || sumBank ===21)   {
+     if (sumPlayer === 21) {
+         console.log("player won");
+     }
+     else {
+         console.log("Bank won");
+     }
+ }
+ else if (sumPlayer > 21 || sumBank > 21) {
+     if (sumPlayer > 21) {
+         console.log("Bank won");
+     }
+     else {
+         console.log("Player won");
+     }
+}
+}
 function startTurn() {
 
     document.querySelector('.player_hand').innerHTML = "";
@@ -184,15 +210,14 @@ function getSumValues(hand)
     return sum;
 }
 
-function changeAceToOne(hand, numOfAcesInPlayer)
+function changeAceToOne(hand)
 {
     for (let i = 0; i < hand.length; i++)
     {
         if (hand[i] === 11)
         {
             hand[i] = 1;
-            numOfAcesInPlayer += 1;
-            console.log(hand[i]);
+            /*numOfAcesInPlayer += 1;*/
         }
     }
 }
@@ -206,7 +231,3 @@ function getValueOfCards() {
 }
 
 startTurn();
-
-let sumBank = summCardValues(intOfBankCards);
-let sumPlayer = summCardValues(intOfPlayerCards);
-

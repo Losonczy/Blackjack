@@ -160,7 +160,7 @@ function endTurn() {
     else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
         showGameOverUI("Bank win");
     }
-    else {
+    else if(getSumValues(intOfPlayerCards)=== getSumValues(intOfBankCards)) {
         showGameOverUI("Tie");
     }
 

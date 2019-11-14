@@ -179,12 +179,14 @@ function whoWon(sumPlayer, sumBank)
      else {
          showGameOverUI("Bank wins");
          disableButtons();
+         changeVisibility();
      }
  }
  else if (sumPlayer > 21 || sumBank > 21) {
      if (sumPlayer > 21) {
          showGameOverUI("Bank wins");
          disableButtons();
+         changeVisibility();
      }
      else {
          showGameOverUI("Player wins");

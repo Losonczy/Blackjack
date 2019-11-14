@@ -156,12 +156,15 @@ function endTurn() {
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
     if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){
         showGameOverUI("Player wins");
+        disableButtons();
     }
     else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
         showGameOverUI("Bank wins");
+        disableButtons();
     }
     else if(getSumValues(intOfPlayerCards)=== getSumValues(intOfBankCards)) {
         showGameOverUI("Tie");
+        disableButtons();
     }
 
 }
@@ -171,17 +174,22 @@ function whoWon(sumPlayer, sumBank)
  if (sumPlayer === 21 || sumBank ===21)   {
      if (sumPlayer === 21) {
          showGameOverUI("Player wins");
+         disableButtons();
      }
      else {
          showGameOverUI("Bank wins");
+         disableButtons();
      }
  }
  else if (sumPlayer > 21 || sumBank > 21) {
      if (sumPlayer > 21) {
          showGameOverUI("Bank wins");
+         disableButtons();
      }
      else {
          showGameOverUI("Player wins");
+         disableButtons();
+
      }
 }
 }
@@ -240,16 +248,11 @@ function enableButtons() {
 }
 function showGameOverUI(winCheck){
 
-    /*let txt = document.createElement('P');
-    txt.id = "gameover_txt";
-    txt.className = 'gameover_txt';
-    txt.innerHTML=winCheck;*/
     let btn = document.createElement("BUTTON");
     btn.id = "replay_button btn";
     btn.className = 'replay_button';
     btn.innerText="Replay";
     btn.onclick=startTurn;
-    //document.getElementById('counter').appendChild(txt);
     document.getElementById('counter').appendChild(btn);
     document.getElementById('counter').innerText=winCheck;
 }

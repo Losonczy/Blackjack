@@ -145,10 +145,7 @@ function getRandomCard(deck, playerCards, bankCards) {
 }
 
 function endTurn() {
-    let new_button = document.getElementById('hit-btn');
-    new_button.onclick = "";
-    new_button = document.getElementById('stay-btn');
-    new_button.onclick = "";
+    disableButtons();
     document.getElementById("cardback").style.visibility = "hidden";
     while (getSumValues(intOfBankCards) < 21 && getSumValues(intOfPlayerCards) >= getSumValues(intOfBankCards)) {
         showCard('bank');
@@ -157,13 +154,13 @@ function endTurn() {
     }
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
     if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){
-        console.log("Player won at endturn");
+        showGameOverUI("");
     }
     else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
-        console.log("Bank won at endturn");
+        showGameOverUI("");
     }
     else {
-        console.log("Its a tie");
+        showGameOverUI("");
     }
 
 }
@@ -172,18 +169,18 @@ function whoWon(sumPlayer, sumBank)
 {
  if (sumPlayer === 21 || sumBank ===21)   {
      if (sumPlayer === 21) {
-         console.log("player won");
+         showGameOverUI("");
      }
      else {
-         console.log("Bank won");
+         showGameOverUI("");
      }
  }
  else if (sumPlayer > 21 || sumBank > 21) {
      if (sumPlayer > 21) {
-         console.log("Bank won");
+         showGameOverUI("");
      }
      else {
-         console.log("Player won");
+         showGameOverUI("");
      }
 }
 }
@@ -193,10 +190,7 @@ function startTurn() {
     document.querySelector('.bank_hand').innerHTML = "";
     dealStartingHand();
     getValueOfCards();
-    let new_button = document.getElementById('stay-btn');
-    new_button.onclick = endTurn;
-    new_button = document.getElementById('hit-btn');
-    new_button.onclick = hit;
+    enableButtons();
 }
 
 
@@ -227,7 +221,37 @@ function getValueOfCards() {
     bankCardValues = addValuesOfCards(bankCards);
     intOfPlayerCards = getIntFromObject(playerCardValues);
     intOfBankCards = getIntFromObject(bankCardValues);
+}
+function disableButtons() {
 
+    let new_button = document.getElementById('hit-btn');
+    new_button.onclick = "";
+    new_button = document.getElementById('stay-btn');
+    new_button.onclick = "";
+}
+function enableButtons() {
+
+    let new_button = document.getElementById('stay-btn');
+    new_button.onclick = endTurn;
+    new_button = document.getElementById('hit-btn');
+    new_button.onclick = hit;
+
+}
+function showGameOverUI(winCheck){
+
+    let txt = document.createElement('P');
+    txt.src = src;
+    txt.id = "gameover_txt";
+    txt.className = 'gameover_txt';
+    txt.innerHTML=winCheck;
+    let btn = document.createElement("BUTTON");
+    btn.id = "replay_button btn";
+    btn.className = 'replay_button';
+    btn.innerText="Replay";
+    btn.onclick=startTurn;
+    document.getElementById('win_title').appendChild(txt);
+    document.getElementById('win_title').appendChild(btn);
+}
 }
 
 startTurn();

@@ -197,11 +197,30 @@ function whoWon(sumPlayer, sumBank)
 }
 function startTurn() {
 
+    playerCards = [];
+    bankCards = [];
+    playerCardValues = [];
+    bankCardValues = [];
+    turn = 'player';
+    intOfPlayerCards = [];
+    intOfBankCards = [];
+    sumValuesOfBank = 0;
+    sumValuesOfPlayer = 0;
+    numOfAcesInPlayer = 0;
+    numOfAcesInBank = 0;
+    resetElement();
+    
     document.querySelector('.player_hand').innerHTML = "";
     document.querySelector('.bank_hand').innerHTML = "";
     dealStartingHand();
     getValueOfCards();
     enableButtons();
+    document.getElementById('counter').innerHTML="";
+
+
+     modifyCounter(getSumValues(intOfPlayerCards));
+
+
 }
 
 
@@ -251,17 +270,21 @@ function enableButtons() {
 function showGameOverUI(winCheck){
 
     let btn = document.createElement("BUTTON");
-    btn.id = "replay_button btn";
-    btn.className = 'replay_button';
+    btn.id = "replay_btn";
+    btn.className = 'replay_button btn';
     btn.innerText="Replay";
     btn.onclick=startTurn;
-    document.getElementById('counter').appendChild(btn);
     document.getElementById('counter').innerText=winCheck;
+    document.getElementById('counter').appendChild(btn);
+
+
+
 }
 
 function modifyCounter(cards) {
     let counter="Cards value:"+cards;
     document.getElementById('counter').innerText=counter;
+
 }
 
 

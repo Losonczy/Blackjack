@@ -237,5 +237,15 @@ function enableButtons() {
     new_button.onclick = hit;
 
 }
+function showGameOverUI(winCheck){
+
+    let txt = document.createElement('P');
+    txt.src = src;
+    txt.id = "gameover_txt";
+    txt.className = 'gameover_txt';
+    txt.innerHTML=winCheck;
+    document.getElementById('win_title').appendChild(txt);
+}
+}
 
 startTurn();

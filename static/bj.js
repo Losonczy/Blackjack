@@ -156,15 +156,15 @@ function endTurn() {
     }
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
     if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){
-        showGameOverUI("Player wins");
+        showGameOverUI("Player wins  ");
         disableButtons();
     }
     else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
-        showGameOverUI("Bank wins");
+        showGameOverUI("Bank wins  ");
         disableButtons();
     }
     else if(getSumValues(intOfPlayerCards)=== getSumValues(intOfBankCards)) {
-        showGameOverUI("Tie");
+        showGameOverUI("Tie  ");
         disableButtons();
     }
 
@@ -174,24 +174,24 @@ function whoWon(sumPlayer, sumBank)
 {
  if (sumPlayer === 21 || sumBank ===21)   {
      if (sumPlayer === 21) {
-         showGameOverUI("Player wins")
+         showGameOverUI("Player wins  ")
          changeVisibility();
          disableButtons();
      }
      else {
-         showGameOverUI("Bank wins");
+         showGameOverUI("Bank wins  ");
          disableButtons();
          changeVisibility();
      }
  }
  else if (sumPlayer > 21 || sumBank > 21) {
      if (sumPlayer > 21) {
-         showGameOverUI("Bank wins");
+         showGameOverUI("Bank wins  ");
          disableButtons();
          changeVisibility();
      }
      else {
-         showGameOverUI("Player wins");
+         showGameOverUI("Player wins  ");
          disableButtons();
 
      }

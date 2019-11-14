@@ -252,6 +252,6 @@ function showGameOverUI(winCheck){
     document.getElementById('win_title').appendChild(txt);
     document.getElementById('win_title').appendChild(btn);
 }
-}
+
 
 startTurn();

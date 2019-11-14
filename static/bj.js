@@ -244,7 +244,11 @@ function showGameOverUI(winCheck){
     txt.id = "gameover_txt";
     txt.className = 'gameover_txt';
     txt.innerHTML=winCheck;
+    let btn = document.createElement("BUTTON");
+    btn.id = "replay_button btn";
+    btn.className = 'replay_button';
     document.getElementById('win_title').appendChild(txt);
+    document.getElementById('win_title').appendChild(btn);
 }
 }
 

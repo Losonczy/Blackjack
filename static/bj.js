@@ -151,7 +151,7 @@ function endTurn() {
     while (getSumValues(intOfBankCards) < 21 && getSumValues(intOfPlayerCards) >= getSumValues(intOfBankCards)) {
         showCard('bank');
         let numOfAcesInBank = 0;
-        changeAceToOne(intOfBankCards, numOfAcesInBank);
+        changeAceToOne(intOfBankCards);
     }
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
     if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){

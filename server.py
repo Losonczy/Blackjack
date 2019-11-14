@@ -11,6 +11,10 @@ def route_index():
 def route_game():
     return render_template('game.html')
 
+@app.route('/end')
+def route_end_game():
+    return render_template('end.html')
+
 if __name__ == "__main__":
     app.run(
         debug=True,

@@ -6,14 +6,21 @@ var playerCardValues = [];
 var bankCardValues = [];
 const deck = createDeck()
 var turn='player'
+let intOfPlayerCards = [];
+let intOfBankCards = [];
 
 //let hit=document.getElementById('hit-btn').addEventListener('click', hit())
 //document.getElementById('stay-btn').addEventListener('click', endTurn())
 
-function separateCardValues(allCardValues)
+function getIntFromObject(cards)
 {
-    playerCardValues = (allCardValues[1]);
-    bankCardValues = (allCardValues[0]);
+    let intArray = [];
+    for (let i = 0; i < cards.length; i++)
+    {
+        intArray.push(parseInt(cards[i]));
+    }
+    return intArray;
+
 }
 
 function storeHands(who, currentCard)
@@ -37,9 +44,12 @@ function dealStartingHand()
 
 }
 function hit() {
-    console.log('hit');
     showCard('player');
-    console.log(summCardValues(bankCardValues));
+    console.log(intOfPlayerCards);
+    console.log(intOfBankCards);
+    console.log(typeof intOfPlayerCards[2]);
+
+    /*console.log(summCardValues(bankCardValues));*/
 }
 
 
@@ -48,8 +58,10 @@ function showCard(who){
     storeHands(who, card);
     createCard(createSrc(card), who);
     //store values
-    handCardValues = valuesOfCards(playerCards, bankCards);
-    separateCardValues(handCardValues);
+    playerCardValues = addValuesOfCards(playerCards);
+    bankCardValues = addValuesOfCards(bankCards);
+    intOfBankCards = getIntFromObject(bankCardValues);
+    intOfPlayerCards = getIntFromObject(playerCardValues);
     //store values
 }
 
@@ -98,14 +110,15 @@ function getRandomNumber(start, range) {
 }
 
 
-function valuesOfCards(bankCards, playerCards)
+function addValuesOfCards(cards)
 {
-    let cardsOfPlayer = [];
-    cardsOfPlayer.push(addingValues(playerCards));
-    let cardsOfBank = [];
-    cardsOfBank.push(addingValues(bankCards));
-    let allHandCardValues = [cardsOfBank, cardsOfPlayer];
-    return allHandCardValues
+    let valueOfCards = [];
+    let cardsWithValues=addingValues(cards);
+    for (let i =0; i < cardsWithValues.length; i++)
+    {
+        valueOfCards.push(cardsWithValues[i]);
+    }
+    return valueOfCards;
 }
 
 
@@ -186,10 +199,9 @@ function summCardValues(hand) {
 
 
 startTurn();
-handCardValues = valuesOfCards(bankCards, playerCards);
-separateCardValues(handCardValues);
-console.log(bankCardValues);
-console.log(playerCardValues);
-
-
+playerCardValues = addValuesOfCards(playerCards);
+bankCardValues = addValuesOfCards(bankCards);
+intOfPlayerCards = getIntFromObject(playerCardValues);
+intOfBankCards = getIntFromObject(bankCardValues);
+console.log(intOfPlayerCards);
 

@@ -35,6 +35,8 @@ function dealStartingHand() {
     showCard('bank');
     showCard('player');
     showCard('player');
+    changeAceToOne(getSumValues(intOfBankCards));
+    changeAceToOne(getSumValues(intOfPlayerCards));
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
 }
 

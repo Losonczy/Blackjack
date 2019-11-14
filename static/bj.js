@@ -50,7 +50,6 @@ function showCard(who) {
     let card = getRandomCard(createDeck(), playerCards, bankCards);
     storeHands(who, card);
     createCard(createSrc(card), who);
-    //store values
     playerCardValues = addValuesOfCards(playerCards);
     bankCardValues = addValuesOfCards(bankCards);
     intOfBankCards = getIntFromObject(bankCardValues);
@@ -63,7 +62,7 @@ function showCard(who) {
     }
     sumValuesOfPlayer = getSumValues(intOfPlayerCards);
     modifyCounter(getSumValues(intOfPlayerCards));
-    //store values
+
 }
 
 
@@ -244,7 +243,6 @@ function changeAceToOne(hand)
         if (hand[i] === 11)
         {
             hand[i] = 1;
-            /*numOfAcesInPlayer += 1;*/
         }
     }
 }
@@ -279,7 +277,6 @@ function showGameOverUI(winCheck){
     btn.onclick=startTurn;
     document.getElementById('counter').innerText=winCheck;
     document.getElementById('counter').appendChild(btn);
-
 
 
 }

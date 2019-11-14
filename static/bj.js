@@ -145,10 +145,7 @@ function getRandomCard(deck, playerCards, bankCards) {
 }
 
 function endTurn() {
-    let new_button = document.getElementById('hit-btn');
-    new_button.onclick = "";
-    new_button = document.getElementById('stay-btn');
-    new_button.onclick = "";
+    disableButtons();
     document.getElementById("cardback").style.visibility = "hidden";
     while (getSumValues(intOfBankCards) < 21 && getSumValues(intOfPlayerCards) >= getSumValues(intOfBankCards)) {
         showCard('bank');
@@ -193,10 +190,7 @@ function startTurn() {
     document.querySelector('.bank_hand').innerHTML = "";
     dealStartingHand();
     getValueOfCards();
-    let new_button = document.getElementById('stay-btn');
-    new_button.onclick = endTurn;
-    new_button = document.getElementById('hit-btn');
-    new_button.onclick = hit;
+    enableButtons();
 }
 
 
@@ -227,6 +221,20 @@ function getValueOfCards() {
     bankCardValues = addValuesOfCards(bankCards);
     intOfPlayerCards = getIntFromObject(playerCardValues);
     intOfBankCards = getIntFromObject(bankCardValues);
+}
+function disableButtons() {
+
+    let new_button = document.getElementById('hit-btn');
+    new_button.onclick = "";
+    new_button = document.getElementById('stay-btn');
+    new_button.onclick = "";
+}
+function enableButtons() {
+
+    let new_button = document.getElementById('stay-btn');
+    new_button.onclick = endTurn;
+    new_button = document.getElementById('hit-btn');
+    new_button.onclick = hit;
 
 }
 

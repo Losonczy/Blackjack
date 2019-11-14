@@ -154,13 +154,13 @@ function endTurn() {
     }
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
     if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){
-        console.log("Player won at endturn");
+        showGameOverUI("");
     }
     else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
-        console.log("Bank won at endturn");
+        showGameOverUI("");
     }
     else {
-        console.log("Its a tie");
+        showGameOverUI("");
     }
 
 }
@@ -169,18 +169,18 @@ function whoWon(sumPlayer, sumBank)
 {
  if (sumPlayer === 21 || sumBank ===21)   {
      if (sumPlayer === 21) {
-         console.log("player won");
+         showGameOverUI("");
      }
      else {
-         console.log("Bank won");
+         showGameOverUI("");
      }
  }
  else if (sumPlayer > 21 || sumBank > 21) {
      if (sumPlayer > 21) {
-         console.log("Bank won");
+         showGameOverUI("");
      }
      else {
-         console.log("Player won");
+         showGameOverUI("");
      }
 }
 }

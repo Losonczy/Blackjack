@@ -8,6 +8,9 @@ const deck = createDeck()
 var turn='player'
 let intOfPlayerCards = [];
 let intOfBankCards = [];
+let sumValuesOfBank = 0;
+let sumValuesOfPlayer = 0;
+let numOfAcesInPlayer = 0;
 
 //let hit=document.getElementById('hit-btn').addEventListener('click', hit())
 //document.getElementById('stay-btn').addEventListener('click', endTurn())
@@ -45,9 +48,8 @@ function dealStartingHand()
 }
 function hit() {
     showCard('player');
-    console.log(intOfPlayerCards);
-    console.log(intOfBankCards);
-    console.log(typeof intOfPlayerCards[2]);
+    /*console.log(intOfPlayerCards);
+    console.log(intOfBankCards);*/
 
     /*console.log(summCardValues(bankCardValues));*/
 }
@@ -62,6 +64,15 @@ function showCard(who){
     bankCardValues = addValuesOfCards(bankCards);
     intOfBankCards = getIntFromObject(bankCardValues);
     intOfPlayerCards = getIntFromObject(playerCardValues);
+    sumValuesOfPlayer = getSumValues(intOfPlayerCards);
+    sumValuesOfBank = getSumValues(intOfBankCards);
+    console.log(sumValuesOfPlayer);
+    if (sumValuesOfPlayer > 21)
+    {
+        changeAceToOne(intOfPlayerCards);
+    }
+    sumValuesOfPlayer = getSumValues(intOfPlayerCards);
+    console.log(sumValuesOfPlayer);
     //store values
 }
 
@@ -186,16 +197,37 @@ function startTurn() {
     document.getElementById('stay-btn').removeEventListener('click',endTurn())
 }*/
 
-function summCardValues(hand) {
+/*function summCardValues(hand)
+{
     console.log(hand);
-    let summ=1;
+    let summ = 0;
     for(let i of hand){
-        console.log(i + 'this');
-        summ= eval(summ) + eval(i);
+        summ += i;
     }
     return summ;
+}*/
+function getSumValues(hand)
+{
+    let sum = 0;
+    for (let i = 0; i < hand.length; i++)
+    {
+        sum += hand[i];
+    }
+    return sum;
 }
 
+function changeAceToOne(hand, numOfAcesInPlayer)
+{
+    for (let i = 0; i < hand.length; i++)
+    {
+        if (hand[i] === 11)
+        {
+            hand[i] = 1;
+            numOfAcesInPlayer += 1;
+            console.log(hand[i]);
+        }
+    }
+}
 
 
 startTurn();
@@ -203,5 +235,6 @@ playerCardValues = addValuesOfCards(playerCards);
 bankCardValues = addValuesOfCards(bankCards);
 intOfPlayerCards = getIntFromObject(playerCardValues);
 intOfBankCards = getIntFromObject(bankCardValues);
-console.log(intOfPlayerCards);
+let sumBank = summCardValues(intOfBankCards);
+let sumPlayer = summCardValues(intOfPlayerCards);
 

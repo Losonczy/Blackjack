@@ -197,12 +197,16 @@ function changeAceToOne(hand, numOfAcesInPlayer)
     }
 }
 
+function getValueOfCards() {
+    playerCardValues = addValuesOfCards(playerCards);
+    bankCardValues = addValuesOfCards(bankCards);
+    intOfPlayerCards = getIntFromObject(playerCardValues);
+    intOfBankCards = getIntFromObject(bankCardValues);
+
+}
 
 startTurn();
-playerCardValues = addValuesOfCards(playerCards);
-bankCardValues = addValuesOfCards(bankCards);
-intOfPlayerCards = getIntFromObject(playerCardValues);
-intOfBankCards = getIntFromObject(bankCardValues);
+
 let sumBank = summCardValues(intOfBankCards);
 let sumPlayer = summCardValues(intOfPlayerCards);
 

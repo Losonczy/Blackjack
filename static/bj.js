@@ -8,6 +8,9 @@ const deck = createDeck();
 var turn = 'player';
 let intOfPlayerCards = [];
 let intOfBankCards = [];
+let sumValuesOfBank = 0;
+let sumValuesOfPlayer = 0;
+let numOfAcesInPlayer = 0;
 
 function getIntFromObject(cards) {
     let intArray = [];
@@ -46,7 +49,21 @@ function showCard(who) {
     let card = getRandomCard(createDeck(), playerCards, bankCards);
     storeHands(who, card);
     createCard(createSrc(card), who);
-    getValueOfCards();
+    //store values
+    playerCardValues = addValuesOfCards(playerCards);
+    bankCardValues = addValuesOfCards(bankCards);
+    intOfBankCards = getIntFromObject(bankCardValues);
+    intOfPlayerCards = getIntFromObject(playerCardValues);
+    sumValuesOfPlayer = getSumValues(intOfPlayerCards);
+    sumValuesOfBank = getSumValues(intOfBankCards);
+    console.log(sumValuesOfPlayer);
+    if (sumValuesOfPlayer > 21)
+    {
+        changeAceToOne(intOfPlayerCards);
+    }
+    sumValuesOfPlayer = getSumValues(intOfPlayerCards);
+    console.log(sumValuesOfPlayer);
+    //store values
 }
 
 
@@ -145,7 +162,7 @@ function endTurn() {
 }
 
 function startTurn() {
-    
+
     document.querySelector('.player_hand').innerHTML = "";
     document.querySelector('.bank_hand').innerHTML = "";
     dealStartingHand();
@@ -156,23 +173,36 @@ function startTurn() {
     new_button.onclick = hit;
 }
 
-function summCardValues(hand) {
-    console.log(hand);
-    let summ = 1;
-    for (let i of hand) {
-        console.log(i + 'this');
-        summ = eval(summ) + eval(i);
+
+function getSumValues(hand)
+{
+    let sum = 0;
+    for (let i = 0; i < hand.length; i++)
+    {
+        sum += hand[i];
     }
-    return summ;
+    return sum;
 }
 
-function getValueOfCards() {
-    playerCardValues = addValuesOfCards(playerCards);
-    bankCardValues = addValuesOfCards(bankCards);
-    intOfPlayerCards = getIntFromObject(playerCardValues);
-    intOfBankCards = getIntFromObject(bankCardValues);
+function changeAceToOne(hand, numOfAcesInPlayer)
+{
+    for (let i = 0; i < hand.length; i++)
+    {
+        if (hand[i] === 11)
+        {
+            hand[i] = 1;
+            numOfAcesInPlayer += 1;
+            console.log(hand[i]);
+        }
+    }
 }
+
 
 startTurn();
-
+playerCardValues = addValuesOfCards(playerCards);
+bankCardValues = addValuesOfCards(bankCards);
+intOfPlayerCards = getIntFromObject(playerCardValues);
+intOfBankCards = getIntFromObject(bankCardValues);
+let sumBank = summCardValues(intOfBankCards);
+let sumPlayer = summCardValues(intOfPlayerCards);
 

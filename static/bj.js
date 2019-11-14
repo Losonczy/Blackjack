@@ -60,6 +60,7 @@ function showCard(who) {
         changeAceToOne(intOfPlayerCards);
     }
     sumValuesOfPlayer = getSumValues(intOfPlayerCards);
+    modifyCounter(getSumValues(intOfPlayerCards));
     //store values
 }
 
@@ -154,13 +155,13 @@ function endTurn() {
     }
     whoWon(getSumValues(intOfPlayerCards), getSumValues(intOfBankCards));
     if (getSumValues(intOfPlayerCards) > getSumValues(intOfBankCards) && getSumValues(intOfPlayerCards) < 21){
-        showGameOverUI("");
+        showGameOverUI("Player win");
     }
     else if (getSumValues(intOfPlayerCards) < getSumValues(intOfBankCards) && getSumValues(intOfBankCards) < 21){
-        showGameOverUI("");
+        showGameOverUI("Bank win");
     }
     else {
-        showGameOverUI("");
+        showGameOverUI("Tie");
     }
 
 }
@@ -169,18 +170,18 @@ function whoWon(sumPlayer, sumBank)
 {
  if (sumPlayer === 21 || sumBank ===21)   {
      if (sumPlayer === 21) {
-         showGameOverUI("");
+         showGameOverUI("Player win");
      }
      else {
-         showGameOverUI("");
+         showGameOverUI("Bank win");
      }
  }
  else if (sumPlayer > 21 || sumBank > 21) {
      if (sumPlayer > 21) {
-         showGameOverUI("");
+         showGameOverUI("Bank win");
      }
      else {
-         showGameOverUI("");
+         showGameOverUI("Player win");
      }
 }
 }
@@ -239,18 +240,23 @@ function enableButtons() {
 }
 function showGameOverUI(winCheck){
 
-    let txt = document.createElement('P');
-    txt.src = src;
+    /*let txt = document.createElement('P');
     txt.id = "gameover_txt";
     txt.className = 'gameover_txt';
-    txt.innerHTML=winCheck;
+    txt.innerHTML=winCheck;*/
     let btn = document.createElement("BUTTON");
     btn.id = "replay_button btn";
     btn.className = 'replay_button';
     btn.innerText="Replay";
     btn.onclick=startTurn;
-    document.getElementById('win_title').appendChild(txt);
-    document.getElementById('win_title').appendChild(btn);
+    //document.getElementById('counter').appendChild(txt);
+    document.getElementById('counter').appendChild(btn);
+    document.getElementById('counter').innerText=winCheck;
+}
+
+function modifyCounter(cards) {
+    let counter="Cards value:"+cards;
+    document.getElementById('counter').innerText=counter;
 }
 
 
